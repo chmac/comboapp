@@ -1,4 +1,6 @@
 // @flow
+
+// NOTE: We can't use the FP version because it caps the iteratee to 1 argument
 import forOwnNorm from "lodash/forOwn";
 
 import rawInteractions from "./combo_beta.json";
