@@ -24,7 +24,7 @@ const Combos = (props: Props) => {
   return (
     <div>
       <SelectedCombos />
-      <p>Choose substances:</p>
+      <h2>Choose substances:</h2>
       {renderSubstances(substances)}
     </div>
   );

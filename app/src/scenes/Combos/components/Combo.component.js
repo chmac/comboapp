@@ -3,6 +3,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import get from "lodash/fp/get";
+import isEmpty from "lodash/fp/isEmpty";
 
 import { getInteraction } from "../combos.reducer";
 
@@ -18,7 +19,10 @@ const Combo = (props: Props) => {
 
   return (
     <div>
-      {first} + {second} = {interaction.interaction}
+      <h3>
+        {first} + {second} = {interaction.interaction}
+      </h3>
+      {isEmpty(interaction.notes) ? null : <p>{interaction.notes}</p>}
     </div>
   );
 };
