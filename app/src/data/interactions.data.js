@@ -5,7 +5,7 @@ import forOwnNorm from "lodash/forOwn";
 
 import rawInteractions from "./combo_beta.json";
 
-type InteractionTypes =
+export type InteractionTypes =
   | "synergy"
   | "low"
   | "decrease"
