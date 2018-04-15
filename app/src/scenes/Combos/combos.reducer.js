@@ -13,6 +13,10 @@ import values from "lodash/fp/values";
 import substances, { type Substance } from "../../data/substances.data";
 import interactions, { type Interaction } from "../../data/interactions.data";
 
+import path from "./selector.path";
+
+const getState = get(path);
+
 const empty = {
   selected: [],
   // Convert the array of substances to `{[id]: object}`
@@ -78,9 +82,9 @@ export const resetSelection = () => {
   };
 };
 
-export const getSelected = get("selected");
+export const getSelected = flow([getState, get("selected")]);
 
-export const getSubstances = get("substances");
+export const getSubstances = flow([getState, get("substances")]);
 
 export const getIsSelected = (state: State, id: string) => {
   return includes(id)(getSelected(state));
