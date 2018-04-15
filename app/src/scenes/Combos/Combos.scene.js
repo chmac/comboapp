@@ -6,6 +6,7 @@ import map from "lodash/fp/map";
 
 import Substance from "./components/Substance.component";
 import SelectedCombos from "./components/SelectedCombos.component";
+import Key from "./components/Key.component";
 
 import { getSubstances, getSelected } from "./combos.reducer";
 
@@ -23,6 +24,7 @@ const Combos = (props: Props) => {
 
   return (
     <div>
+      <Key />
       <SelectedCombos />
       <h2>Choose substances:</h2>
       {renderSubstances(substances)}

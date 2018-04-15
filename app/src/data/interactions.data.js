@@ -14,6 +14,22 @@ export type InteractionTypes =
   | "danger"
   | "unknown";
 
+export const interactionTypes = [
+  {
+    id: "synergy",
+    name: "Low Risk & Synergy"
+  },
+  {
+    id: "low",
+    name: "Low Risk & No Synergy"
+  },
+  { id: "decrease", name: "Low Risk & Decrease" },
+  { id: "caution", name: "Caution" },
+  { id: "unsafe", name: "Unsafe" },
+  { id: "danger", name: "Dangerous" },
+  { id: "unknown", name: "Unknown" }
+];
+
 export type Interaction = {
   ids: string[],
   interaction: InteractionTypes,
