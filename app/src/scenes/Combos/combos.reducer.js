@@ -10,8 +10,8 @@ import isEmpty from "lodash/fp/isEmpty";
 import difference from "lodash/fp/difference";
 import values from "lodash/fp/values";
 
-import substances, { type Substance } from "./substances.data";
-import interactions, { type Interaction } from "./interactions.data";
+import substances, { type Substance } from "../../data/substances.data";
+import interactions, { type Interaction } from "../../data/interactions.data";
 
 const empty = {
   selected: [],
