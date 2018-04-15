@@ -1,6 +1,13 @@
 // @flow
 
 import React from "react";
+import ArrowUp from "react-icons/lib/fa/arrow-up";
+import DotCircle from "react-icons/lib/fa/dot-circle-o";
+import ArrowDown from "react-icons/lib/fa/arrow-down";
+import Warning from "react-icons/lib/fa/exclamation-triangle";
+import Heartbeat from "react-icons/lib/fa/heartbeat";
+import Times from "react-icons/lib/fa/times-circle";
+import Question from "react-icons/lib/fa/question";
 
 import { type InteractionTypes } from "data/interactions.data";
 
@@ -8,12 +15,27 @@ type Props = {
   interaction: InteractionTypes
 };
 
-const interactionToIconMap = {};
+const style = (color: string) => {
+  return {
+    backgroundColor: color,
+    padding: 10
+  };
+};
+
+const interactionToIconMap = {
+  synergy: <ArrowUp color="white" style={style("#1d6a2b")} />,
+  low: <DotCircle color="white" style={style("#31b149")} />,
+  decrease: <ArrowDown color="white" style={style("#006cb3")} />,
+  caution: <Warning color="white" style={style("#d5c625")} />,
+  unsafe: <Heartbeat color="white" style={style("#d98427")} />,
+  danger: <Times color="white" style={style("#d12128")} />,
+  unknown: <Question color="white" style={style("#6f6f6f")} />
+};
 
 const InteractionIcon = (props: Props) => {
   const { interaction } = props;
 
-  return <span>!!</span>;
+  return interactionToIconMap[interaction];
 };
 
 export default InteractionIcon;
