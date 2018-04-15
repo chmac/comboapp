@@ -8,6 +8,8 @@ import { type Substance as SubstanceType } from "data/substances.data";
 
 import { getIsSelected, toggleSelected } from "../combos.reducer";
 
+import "./Substance.css";
+
 type Props = {
   substance: SubstanceType
 } & StateProps &
@@ -18,10 +20,13 @@ const Substance = (props: Props) => {
   const { id, name } = substance;
 
   return (
-    <div onClick={toggleSelected.bind(null, id)}>
+    <button
+      className={`Substance ${isSelected ? "Substance-selected" : ""}`}
+      onClick={toggleSelected.bind(null, id)}
+    >
       {name}
       {isSelected ? "*" : ""}
-    </div>
+    </button>
   );
 };
 

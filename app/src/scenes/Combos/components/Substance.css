@@ -1,0 +1,10 @@
+.Substance {
+  color: red;
+  border-color: red;
+  padding: 10px;
+  margin: 10px;
+}
+.Substance-selected {
+  color: green;
+  border-color: green;
+}
