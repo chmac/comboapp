@@ -1,4 +1,7 @@
 // @flow
+import forOwnNorm from "lodash/forOwn";
+
+import rawInteractions from "./combo_beta.json";
 
 type InteractionTypes =
   | "synergy"
@@ -6,15 +9,40 @@ type InteractionTypes =
   | "decrease"
   | "caution"
   | "unsafe"
-  | "danger";
+  | "danger"
+  | "unknown";
 
 export type Interaction = {
   ids: string[],
   interaction: InteractionTypes,
-  notes: string
+  note: string
 };
 
-const interactions = [
+const statusToInteractionMap = {
+  "Low Risk & Synergy": "synergy",
+  "Low Risk & No Synergy": "low",
+  "Low Risk & Decrease": "decrease",
+  Caution: "caution",
+  Unsafe: "unsafe",
+  Dangerous: "danger"
+};
+
+const convertStatusToInteraction = (status: string): string =>
+  statusToInteractionMap[status] || "unknown";
+
+const interactions = [];
+
+forOwnNorm(rawInteractions, (value, firstId, object) => {
+  forOwnNorm(value, (data, secondId) => {
+    interactions.push({
+      ids: [firstId, secondId],
+      ...data,
+      interaction: convertStatusToInteraction(data.status)
+    });
+  });
+});
+
+const interactionsTemp = [
   {
     ids: ["lsd", "cannabis"],
     interaction: "caution",

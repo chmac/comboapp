@@ -12,8 +12,8 @@ import values from "lodash/fp/values";
 import each from "lodash/fp/each";
 import eq from "lodash/fp/eq";
 
-import substances, { type Substance } from "../../data/substances.data";
-import interactions, { type Interaction } from "../../data/interactions.data";
+import substances, { type Substance } from "data/substances.data";
+import interactions, { type Interaction } from "data/interactions.data";
 
 import path from "./selector.path";
 

@@ -25,7 +25,7 @@ const Combo = (props: Props) => {
       <h3>
         {first.name} + {second.name} = {interactionText}
       </h3>
-      {isEmpty(interaction.notes) ? null : <p>{interaction.notes}</p>}
+      {isEmpty(interaction.note) ? null : <p>{interaction.note}</p>}
     </div>
   );
 };
