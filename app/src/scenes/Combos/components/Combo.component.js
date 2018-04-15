@@ -5,22 +5,25 @@ import { connect } from "react-redux";
 import get from "lodash/fp/get";
 import isEmpty from "lodash/fp/isEmpty";
 
-import { getInteraction } from "../combos.reducer";
+import { getInteraction, getSubstance } from "../combos.reducer";
 
 import { type Interaction } from "data/interactions.data";
+import { type Substance } from "data/substances.data";
 
 type Props = {
-  first: string,
-  second: string
+  firstId: string,
+  secondId: string
 } & StateProps;
 
 const Combo = (props: Props) => {
-  const { first, second, interaction } = props;
+  const { first, second, firstId, secondId, interaction } = props;
+
+  const interactionText = interaction.interaction || "no data";
 
   return (
     <div>
       <h3>
-        {first} + {second} = {interaction.interaction}
+        {first.name} + {second.name} = {interactionText}
       </h3>
       {isEmpty(interaction.notes) ? null : <p>{interaction.notes}</p>}
     </div>
@@ -28,14 +31,18 @@ const Combo = (props: Props) => {
 };
 
 type StateProps = {
-  interaction: Interaction
+  interaction: Interaction,
+  first: Substance,
+  second: Substance
 };
 
-const mapStateToProps = (state, props) => {
-  const { first, second } = props;
+const mapStateToProps = (state, props): StateProps => {
+  const { firstId, secondId } = props;
 
   return {
-    interaction: getInteraction([first, second])
+    interaction: getInteraction([firstId, secondId]),
+    first: getSubstance(firstId),
+    second: getSubstance(secondId)
   };
 };
 

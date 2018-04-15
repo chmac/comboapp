@@ -1,6 +1,12 @@
 // @flow
 
-type InteractionTypes = "a" | "b" | "c" | "d";
+type InteractionTypes =
+  | "synergy"
+  | "low"
+  | "decrease"
+  | "caution"
+  | "unsafe"
+  | "danger";
 
 export type Interaction = {
   ids: string[],
@@ -11,8 +17,15 @@ export type Interaction = {
 const interactions = [
   {
     ids: ["lsd", "cannabis"],
-    interaction: "a",
-    notes: "Great"
+    interaction: "caution",
+    notes:
+      "Cannabis has an unexpectedly strong and somewhat unpredictable synergy with psychedelics."
+  },
+  {
+    ids: ["lsd", "cocaine"],
+    interaction: "caution",
+    notes:
+      "Stimulants increase anxiety levels and the risk of thought loops which can lead to negative experiences"
   }
 ];
 

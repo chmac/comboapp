@@ -88,6 +88,8 @@ export const getSelected = flow([getState, get("selected")]);
 
 export const getSubstances = flow([getState, get("substances")]);
 
+export const getSubstance = (id: string) => get(id)(substances);
+
 export const getIsSelected = (state: State, id: string) => {
   return includes(id)(getSelected(state));
 };
@@ -100,7 +102,7 @@ export const getComboCount = (state: State) => {
   return count * (count - 1) / 2;
 };
 
-export const getInteraction = (ids: string[]) => {
+export const getInteraction = (ids: string[]): Interaction => {
   return (
     find((interaction: Interaction) => {
       // If the difference between this substance's IDs array and our target IDs
