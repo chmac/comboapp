@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import map from "lodash/fp/map";
 
 import Substance from "./components/Substance.component";
+import SelectedCombos from "./components/SelectedCombos.component";
 
 import { getSubstances, getSelected } from "./combos.reducer";
 
@@ -20,7 +21,13 @@ const renderSubstances = map(s => <Substance key={s.id} substance={s} />);
 const Combos = (props: Props) => {
   const { substances, selected } = props;
 
-  return <div>{renderSubstances(substances)}</div>;
+  return (
+    <div>
+      <SelectedCombos />
+      <p>Choose substances:</p>
+      {renderSubstances(substances)}
+    </div>
+  );
 };
 
 const mapStateToProps = state => {

@@ -9,6 +9,7 @@ import find from "lodash/fp/find";
 import isEmpty from "lodash/fp/isEmpty";
 import difference from "lodash/fp/difference";
 import values from "lodash/fp/values";
+import each from "lodash/fp/each";
 import eq from "lodash/fp/eq";
 
 import substances, { type Substance } from "../../data/substances.data";
@@ -108,8 +109,22 @@ export const getInteraction = (ids: string[]) => {
 };
 
 type Combo = [string, string];
-export const getCombos = (): Combo[] => {
-  return [];
+export const getCombos = (state: any): Combo[] => {
+  // We need to clone `selected` so as not to mutate redux state
+  const selected = [...getSelected(state)];
+
+  // We take IDs from `selected` and push them into `memo`
+  const memo = [];
+  // We build the result iteratively into `combos`
+  const combos = [];
+
+  each(() => {
+    const id = selected.pop();
+    each((memoId: string) => combos.push([id, memoId]))(memo);
+    memo.push(id);
+  })(selected.reverse());
+
+  return combos;
 };
 
 // export const getSelectedCombos
