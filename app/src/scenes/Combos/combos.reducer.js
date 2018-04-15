@@ -101,11 +101,13 @@ export const getComboCount = (state: State) => {
 };
 
 export const getInteraction = (ids: string[]) => {
-  find((interaction: Interaction) => {
-    // If the difference between this substance's IDs array and our target IDs
-    // array is empty, then this interaction is a match.
-    return isEmpty(difference(interaction.ids, ids));
-  })(interactions);
+  return (
+    find((interaction: Interaction) => {
+      // If the difference between this substance's IDs array and our target IDs
+      // array is empty, then this interaction is a match.
+      return isEmpty(difference(interaction.ids, ids));
+    })(interactions) || {}
+  );
 };
 
 type Combo = [string, string];
