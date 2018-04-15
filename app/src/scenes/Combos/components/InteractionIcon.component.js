@@ -8,7 +8,9 @@ type Props = {
 };
 
 const InteractionIcon = (props: Props) => {
-  return <span>!!</span>;
+  const { interaction } = props;
+
+  return <span>{interaction}</span>;
 };
 
 export default InteractionIcon;
