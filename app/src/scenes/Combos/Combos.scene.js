@@ -4,18 +4,18 @@ import React from "react";
 import { connect } from "react-redux";
 import map from "lodash/fp/map";
 
+import Substance from "./components/Substance.component";
+
 import { getSubstances, getSelected } from "./combos.reducer";
 
-import { type Substance } from "../../data/substances.data";
+import { type Substance as SubstanceType } from "data/substances.data";
 
 type Props = {
-  substances: { [id: string]: Substance },
+  substances: { [id: string]: SubstanceType },
   selected: string[]
 };
 
-const renderSubstances = map(({ id, name }) => {
-  return <div key={id}>{name}</div>;
-});
+const renderSubstances = map(s => <Substance key={s.id} substance={s} />);
 
 const Combos = (props: Props) => {
   const { substances, selected } = props;
