@@ -9,6 +9,7 @@ import find from "lodash/fp/find";
 import isEmpty from "lodash/fp/isEmpty";
 import difference from "lodash/fp/difference";
 import values from "lodash/fp/values";
+import eq from "lodash/fp/eq";
 
 import substances, { type Substance } from "../../data/substances.data";
 import interactions, { type Interaction } from "../../data/interactions.data";
@@ -37,7 +38,7 @@ type Action = {
 
 const toggleSelectedInSelected = (selected: string[], id: string) => {
   if (includes(id)(selected)) {
-    return reject(() => id)(selected);
+    return reject(eq(id))(selected);
   } else {
     return selected.concat(id);
   }
