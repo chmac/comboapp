@@ -10,6 +10,8 @@ import { getInteraction, getSubstance } from "../combos.reducer";
 import { type Interaction } from "data/interactions.data";
 import { type Substance } from "data/substances.data";
 
+import InteractionIcon from "./InteractionIcon.component";
+
 type Props = {
   firstId: string,
   secondId: string
@@ -23,7 +25,8 @@ const Combo = (props: Props) => {
   return (
     <div>
       <h3>
-        {first.name} + {second.name} = {interactionText}
+        {first.name} + {second.name} ={" "}
+        <InteractionIcon interaction={interaction.interaction} />
       </h3>
       {isEmpty(interaction.note) ? null : <p>{interaction.note}</p>}
     </div>
