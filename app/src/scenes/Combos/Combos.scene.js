@@ -1,6 +1,8 @@
+// @flow
+
 import React from "react";
 
-const Combos = props => {
+const Combos = () => {
   return <div>Combos!</div>;
 };
 
