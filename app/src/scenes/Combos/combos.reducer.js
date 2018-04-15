@@ -37,7 +37,7 @@ type Action = {
 
 const toggleSelectedInSelected = (selected: string[], id: string) => {
   if (includes(id)(selected)) {
-    return reject(id)(selected);
+    return reject(() => id)(selected);
   } else {
     return selected.concat(id);
   }
