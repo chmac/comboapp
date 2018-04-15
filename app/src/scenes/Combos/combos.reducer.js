@@ -71,7 +71,7 @@ export default reducer;
 export const toggleSelected = (id: string) => {
   return {
     type: "toggleSelected",
-    payload: { id, now: new Date.now() }
+    payload: { id, now: Date.now() }
   };
 };
 
