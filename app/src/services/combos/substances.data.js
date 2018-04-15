@@ -7,6 +7,13 @@ export type Substance = {
   name: string
 };
 
-const substances = [{ id: "lsd", name: "LSD" }];
+const substances = [
+  { id: "lsd", name: "LSD" },
+  {
+    id: "cannabis",
+    name: "Cannabis"
+  },
+  { id: "cocaine", name: "Cocaine" }
+];
 
 export default keyBy("id", substances);

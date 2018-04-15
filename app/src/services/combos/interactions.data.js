@@ -10,7 +10,7 @@ export type Interaction = {
 
 const interactions = [
   {
-    ids: ["lsd"],
+    ids: ["lsd", "cannabis"],
     interaction: "a",
     notes: "Great"
   }
