@@ -95,14 +95,16 @@ export const getComboCount = (state: State) => {
 };
 
 export const getInteraction = (ids: string[]) => {
-  find((substance: Substance) => {
+  find((interaction: Interaction) => {
     // If the difference between this substance's IDs array and our target IDs
     // array is empty, then this interaction is a match.
-    return isEmpty(difference(substance.ids, ids));
+    return isEmpty(difference(interaction.ids, ids));
   })(interactions);
 };
 
 type Combo = [string, string];
-export const getCombos = (): Combo[] => {};
+export const getCombos = (): Combo[] => {
+  return [];
+};
 
 // export const getSelectedCombos
