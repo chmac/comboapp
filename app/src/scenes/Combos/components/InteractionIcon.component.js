@@ -23,8 +23,8 @@ const style = (color: string) => {
 };
 
 const interactionToIconMap = {
-  synergy: <ArrowUp color="white" style={style("#1d6a2b")} />,
-  low: <DotCircle color="white" style={style("#31b149")} />,
+  synergy: <ArrowUp color="white" style={style("#0a89dd")} />,
+  low: <DotCircle color="white" style={style("#35afff")} />,
   decrease: <ArrowDown color="white" style={style("#006cb3")} />,
   caution: <Warning color="white" style={style("#d5c625")} />,
   unsafe: <Heartbeat color="white" style={style("#d98427")} />,
