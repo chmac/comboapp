@@ -7,7 +7,6 @@ import map from "lodash/fp/map";
 import Substance from "./components/Substance.component";
 import SelectedCombos from "./components/SelectedCombos.component";
 import Key from "./components/Key.component";
-import Credits from "./components/Credits.component";
 
 import { getSubstances, getSelected } from "./combos.reducer";
 
@@ -29,7 +28,6 @@ const Combos = (props: Props) => {
       <SelectedCombos />
       <h2>Choose substances:</h2>
       {renderSubstances(substances)}
-      <Credits />
     </div>
   );
 };
