@@ -5,6 +5,7 @@
   margin: 10px;
 }
 .Substance-selected {
-  color: green;
-  border-color: green;
+  color: white;
+  border-color: #777;
+  background-color: #333;
 }

@@ -1,3 +1,7 @@
+#root {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
 .App {
   text-align: center;
 }
@@ -8,10 +12,9 @@
 }
 
 .App-header {
-  background-color: #222;
+  color: black;
   height: 60px;
-  padding: 20px;
-  color: white;
+  margin-bottom: 60px;
 }
 
 .App-title {
