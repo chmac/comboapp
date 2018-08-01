@@ -6,30 +6,50 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  color: black;
-  height: 60px;
-  margin-bottom: 60px;
-}
-
 .App-title {
   font-size: 1.5em;
+  margin-bottom: 30px;
 }
 
-.App-intro {
-  font-size: large;
+body {
+  padding-bottom: 20px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  line-height: 120%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+a {
+  color: #00B7FF;
+}
+
+
+ /* Navbar */
+.choice {
+  font-family: Arial, sans-serif;
+  font: white;
+}
+
+.choice:hover {
+  background-color: #7900C2;
+  transition: color 0.25s ease, background-color 0.25s ease;
+}
+
+.navbar-nav {
+  color: white;
+}
+
+.navbar {
+  background-color: #000;
+}
+
+.navbar-inverse {
+  background-image: none;
+  color: white;
+}
+
+.navbar-fixed-top {
+  border: 0;
+}
+
+header {
+  margin-bottom: 25px;
 }
