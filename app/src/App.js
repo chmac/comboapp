@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
-
+import Nav from "./scenes/Nav/Nav.component";
+import Banner from "./scenes/Nav/Banner.component";
 import reducer from "./root.reducer";
 
 import Combos from "./scenes/Combos";
@@ -19,10 +20,17 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div className="App">
-          <header className="App-header">
-            <h1 className="App-title">Drug Combinations</h1>
-          </header>
+        <header>
+            <Banner />
+            <Nav />
+        </header>
+        <div style={{marginTop:"2%"}} class="container-fluid">
+          <div class="jumbotron">
+
+          <h1 className="App-title">Drug Combinations</h1>
           <Combos />
+            </div>
+          </div>
         </div>
       </Provider>
     );

@@ -2,6 +2,7 @@
 
 import React from "react";
 import map from "lodash/fp/map";
+import "./Key.css";
 
 import InteractionIcon from "./InteractionIcon.component";
 
@@ -11,21 +12,15 @@ const renderTypes = map(type => {
   const { id, name } = type;
 
   return (
-    <div style={{ float: "left", marginLeft: 10, marginRight: 10 }}>
-      <InteractionIcon interaction={type.id} /> {name}
+    <div className={'FlexItem'} key={type.id} >
+      <InteractionIcon interaction={type.id}  /> {name}
     </div>
   );
 });
 
 const Key = () => {
   return (
-    <div
-      style={{
-        backgroundColor: "lightgrey",
-        paddingTop: 10,
-        paddingBottom: 10
-      }}
-    >
+    <div className={'FlexBox'}>
       {renderTypes(interactionTypes)}
       <div style={{ clear: "both" }} />
     </div>

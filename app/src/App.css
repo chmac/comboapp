@@ -1,32 +1,55 @@
+#root {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.App-title {
+  font-size: 1.5em;
+  margin-bottom: 30px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 60px;
-  padding: 20px;
+body {
+  padding-bottom: 20px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  line-height: 120%;
+}
+
+a {
+  color: #00B7FF;
+}
+
+
+ /* Navbar */
+.choice {
+  font-family: Arial, sans-serif;
+  font: white;
+}
+
+.choice:hover {
+  background-color: #7900C2;
+  transition: color 0.25s ease, background-color 0.25s ease;
+}
+
+.navbar-nav {
   color: white;
 }
 
-.App-title {
-  font-size: 1.5em;
+.navbar {
+  background-color: #000;
 }
 
-.App-intro {
-  font-size: large;
+.navbar-inverse {
+  background-image: none;
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navbar-fixed-top {
+  border: 0;
+}
+
+header {
+  margin-bottom: 25px;
 }

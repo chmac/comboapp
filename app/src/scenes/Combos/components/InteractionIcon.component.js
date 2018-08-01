@@ -18,7 +18,9 @@ type Props = {
 const style = (color: string) => {
   return {
     backgroundColor: color,
-    padding: 10
+    padding: 3,
+    width: 25,
+    height: 25
   };
 };
 

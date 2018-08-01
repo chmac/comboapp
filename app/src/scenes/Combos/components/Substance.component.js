@@ -25,7 +25,6 @@ const Substance = (props: Props) => {
       onClick={toggleSelected.bind(null, id)}
     >
       {name}
-      {isSelected ? "*" : ""}
     </button>
   );
 };

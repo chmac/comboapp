@@ -1,0 +1,29 @@
+.FlexBox {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: flex;
+    min-height: 100px;
+}
+
+.FlexItem {
+    margin-left: 10px;
+    margin-right: 10px;
+    align-self: center;    
+    font-size: 24px;
+    vertical-align: middle;
+}
+
+
+
+@media (max-width: 650px) {
+    .FlexBox {
+        flex-direction: column;
+    }
+    .FlexItem {
+        font-size: 16px;
+        text-align: left;
+        width: 200px;
+        padding-bottom: 10px;
+    }
+}
