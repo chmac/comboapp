@@ -9,11 +9,11 @@ import InteractionIcon from "./InteractionIcon.component";
 import { interactionTypes } from "data/interactions.data";
 
 const renderTypes = map(type => {
-  const { id, name } = type;
+  const { id, name, description } = type;
 
   return (
     <div className={'FlexItem'} key={type.id} >
-      <InteractionIcon interaction={type.id}  /> {name}
+      <InteractionIcon interaction={type.id}  /> {name} 
     </div>
   );
 });

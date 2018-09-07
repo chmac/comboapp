@@ -18,7 +18,7 @@ type Props = {
 } & StateProps;
 
 const Combo = (props: Props) => {
-  const { first, second, firstId, secondId, interaction } = props;
+  const { first, second, firstId, secondId, interaction, name } = props;
 
   const interactionText = interaction.interaction || "no data";
 
@@ -26,7 +26,7 @@ const Combo = (props: Props) => {
     <div>
       <h3>
         {first.name} + {second.name} ={" "}
-        <InteractionIcon interaction={interaction.interaction} />
+        <InteractionIcon interaction={interaction.interaction} /> {interaction.status} {interaction.description} 
       </h3>
       {isEmpty(interaction.note) ? null : <p>{interaction.note}</p>}
     </div>
