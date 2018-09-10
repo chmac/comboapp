@@ -63,7 +63,7 @@ const reducer = (state: State = empty, action: Action) => {
     return { ...state, selected, substances };
   } else if (type === "resetSelection") {
     return set("selected", [])(state);
-  } 
+  }
 
   return state;
 };
