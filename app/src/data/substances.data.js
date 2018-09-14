@@ -52,13 +52,4 @@ const substances = map(name => {
   };
 })(names);
 
-const substancesTemp = [
-  { id: "lsd", name: "LSD" },
-  {
-    id: "cannabis",
-    name: "Cannabis"
-  },
-  { id: "cocaine", name: "Cocaine" }
-];
-
 export default keyBy("id", substances);

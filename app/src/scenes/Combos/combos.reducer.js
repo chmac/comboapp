@@ -11,6 +11,7 @@ import difference from "lodash/fp/difference";
 import values from "lodash/fp/values";
 import each from "lodash/fp/each";
 import eq from "lodash/fp/eq";
+import sortBy from "lodash/fp/sortBy";
 
 import substances, { type Substance } from "data/substances.data";
 import interactions, { type Interaction } from "data/interactions.data";
@@ -63,7 +64,7 @@ const reducer = (state: State = empty, action: Action) => {
     return { ...state, selected, substances };
   } else if (type === "resetSelection") {
     return set("selected", [])(state);
-  } 
+  }
 
   return state;
 };
@@ -86,7 +87,11 @@ export const resetSelection = () => {
 
 export const getSelected = flow([getState, get("selected")]);
 
-export const getSubstances = flow([getState, get("substances")]);
+export const getSubstances = flow([
+  getState,
+  get("substances"),
+  sortBy("name")
+]);
 
 export const getSubstance = (id: string) => get(id)(substances);
 
@@ -99,7 +104,7 @@ export const getSelectedCount = flow([getSelected, get("length")]);
 export const getComboCount = (state: State) => {
   const count = getSelectedCount(state);
 
-  return count * (count - 1) / 2;
+  return (count * (count - 1)) / 2;
 };
 
 export const getInteraction = (ids: string[]): Interaction => {
