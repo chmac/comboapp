@@ -127,13 +127,13 @@ const defaultInteraction = {
 };
 
 export const getInteraction = (ids: string[]): Interaction => {
-  return (
-    find((interaction: Interaction) => {
-      // If the difference between this substance's IDs array and our target IDs
-      // array is empty, then this interaction is a match.
-      return isEmpty(difference(interaction.ids, ids));
-    })(interactions) || defaultInteraction
-  );
+  const interaction = find((interaction: Interaction) => {
+    // If the difference between this substance's IDs array and our target IDs
+    // array is empty, then this interaction is a match.
+    return isEmpty(difference(interaction.ids, ids));
+  })(interactions);
+
+  return isEmpty(interaction) ? { ...defaultInteraction, ids } : interaction;
 };
 
 type Combo = [string, string];
