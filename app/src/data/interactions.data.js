@@ -84,19 +84,20 @@ forOwnNorm(rawInteractions, (value, firstId, object) => {
   });
 });
 
-const interactionsTemp = [
-  {
-    ids: ["lsd", "cannabis"],
-    interaction: "caution",
-    notes:
-      "Cannabis has an unexpectedly strong and somewhat unpredictable synergy with psychedelics.",
-  },
-  {
-    ids: ["lsd", "cocaine"],
-    interaction: "caution",
-    notes:
-      "Stimulants increase anxiety levels and the risk of thought loops which can lead to negative experiences",
-  },
-];
+// Example of whta the data ends up looking like
+// const interactionsTemp = [
+//   {
+//     ids: ["lsd", "cannabis"],
+//     interaction: "caution",
+//     notes:
+//       "Cannabis has an unexpectedly strong and somewhat unpredictable synergy with psychedelics.",
+//   },
+//   {
+//     ids: ["lsd", "cocaine"],
+//     interaction: "caution",
+//     notes:
+//       "Stimulants increase anxiety levels and the risk of thought loops which can lead to negative experiences",
+//   },
+// ];
 
 export default interactions;
