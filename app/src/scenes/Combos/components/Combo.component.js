@@ -22,8 +22,18 @@ type Props = {
   secondId: string,
 } & StateProps;
 
+const defaultInteraction = {
+  interaction: "unknown",
+  status: "unknown",
+  description: "",
+};
+
 const Combo = (props: Props) => {
-  const { first, second, interaction } = props;
+  const { first, second } = props;
+  const interaction = isEmpty(props.interaction)
+    ? defaultInteraction
+    : props.interaction;
+  // debugger;
 
   return (
     <div>

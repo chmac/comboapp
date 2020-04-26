@@ -57,7 +57,9 @@ export const interactionTypes = [
 export type Interaction = {
   ids: string[],
   interaction: InteractionTypes,
-  note: string,
+  note?: string,
+  status?: string,
+  description?: string,
 };
 
 const statusToInteractionMap = {
