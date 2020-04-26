@@ -16,6 +16,7 @@ export type Substance = {
   id: string,
   name: string,
   type: string,
+  categories: string[],
 };
 
 // Build a list of "proper" names from `config.tableOrder`
@@ -63,22 +64,24 @@ export const substances = keyById(
 
 export const allSubstances = keyById(
   map((drug: { name: string, pretty_name?: string, categories: string[] }) => {
-    const { name, categories } = drug;
+    const { name } = drug;
 
     const pretty_name =
       typeof drug.pretty_name === "string"
         ? drug.pretty_name
         : upperFirst(name);
 
+    const categories =
+      drug.categories && drug.categories.length > 0 ? drug.categories : [];
+
     const type =
-      (categories && categories.length && categories[0]) ||
-      nameToType[name] ||
-      "unknown";
+      (categories.length > 0 && categories[0]) || nameToType[name] || "unknown";
 
     return {
       id: name,
       name: pretty_name,
       type,
+      categories,
     };
   })(allDrugs)
 );
