@@ -2,7 +2,9 @@
 
 import keyBy from "lodash/fp/keyBy";
 import flatten from "lodash/fp/flatten";
+import zip from "lodash/fp/zip";
 import map from "lodash/fp/map";
+import each from "lodash/fp/each";
 import upperFirst from "lodash/fp/upperFirst";
 
 import config from "./config.json";
@@ -19,6 +21,8 @@ export type Substance = {
 // Build a list of "proper" names from `config.tableOrder`
 const names = flatten(config.tableOrder);
 
+// Build a list of groups along with their substances
+const groups = zip(config.groupNames, names);
 /*
 const groups = [
   ['psychedelic', [
@@ -39,9 +43,26 @@ const groups = [
 */
 
 const nameToType = {};
+each(([type, names]) => {
+  each((name) => {
+    nameToType[name] = type;
+  })(names);
+})(groups);
 
-const substances = map(
-  (drug: { name: string, pretty_name?: string, categories: string[] }) => {
+const keyById = keyBy("id");
+
+export const substances = keyById(
+  map((name) => {
+    return {
+      id: name.toLowerCase(),
+      name,
+      type: nameToType[name],
+    };
+  })(names)
+);
+
+export const allSubstances = keyById(
+  map((drug: { name: string, pretty_name?: string, categories: string[] }) => {
     const { name, categories } = drug;
 
     const pretty_name =
@@ -60,17 +81,5 @@ const substances = map(
       type,
     };
     // debugger;
-  }
-)(allDrugs);
-
-// const substances = map((name) => {
-//   return {
-//     id: name.toLowerCase(),
-//     name,
-//     type: nameToType[name],
-//   };
-// })(names);
-
-debugger;
-
-export default keyBy("id", substances);
+  })(allDrugs)
+);
