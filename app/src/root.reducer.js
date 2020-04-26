@@ -5,7 +5,7 @@ import { combineReducers } from "redux";
 import combos from "./scenes/Combos/combos.reducer";
 
 const reducer = combineReducers({
-  combos
+  combos,
 });
 
 export default reducer;

@@ -20,16 +20,25 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div className="App">
-        <header>
+          <header>
             <Banner />
             <Nav />
-        </header>
-        <div style={{marginTop:"2%"}} className="container-fluid">
-          <div className="jumbotron">
-
-          <h1 className="App-title">Drug Combinations</h1>
-          <p>This is an app version of our combo chart you can find <a href="https://wiki.tripsit.me/wiki/Drug_combinations" target="_blank" rel="noopener noreferrer"> here</a> </p>
-          <Combos />
+          </header>
+          <div style={{ marginTop: "2%" }} className="container-fluid">
+            <div className="jumbotron">
+              <h1 className="App-title">Drug Combinations</h1>
+              <p>
+                This is an app version of our combo chart you can find{" "}
+                <a
+                  href="https://wiki.tripsit.me/wiki/Drug_combinations"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {" "}
+                  here
+                </a>{" "}
+              </p>
+              <Combos />
             </div>
           </div>
         </div>
@@ -39,4 +48,3 @@ class App extends Component {
 }
 
 export default App;
-

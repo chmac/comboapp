@@ -8,19 +8,19 @@ import InteractionIcon from "./InteractionIcon.component";
 
 import { interactionTypes } from "data/interactions.data";
 
-const renderTypes = map(type => {
+const renderTypes = map((type) => {
   const { id, name, description } = type;
 
   return (
-    <div className={'FlexItem'} key={type.id} >
-      <InteractionIcon interaction={type.id}  /> {name} 
+    <div className={"FlexItem"} key={type.id}>
+      <InteractionIcon interaction={type.id} /> {name}
     </div>
   );
 });
 
 const Key = () => {
   return (
-    <div className={'FlexBox'}>
+    <div className={"FlexBox"}>
       {renderTypes(interactionTypes)}
       <div style={{ clear: "both" }} />
     </div>

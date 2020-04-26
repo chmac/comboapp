@@ -8,20 +8,20 @@ import { getSelected, getCombos } from "../combos.reducer";
 
 import Combo from "./Combo.component";
 
-const renderCombos = map(combo => (
+const renderCombos = map((combo) => (
   <Combo key={combo.join(",")} firstId={combo[0]} secondId={combo[1]} />
 ));
 
-const SelectedCombos = props => {
+const SelectedCombos = (props) => {
   const { selected, combos } = props;
 
   return <div>{renderCombos(combos)}</div>;
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     selected: getSelected(state),
-    combos: getCombos(state)
+    combos: getCombos(state),
   };
 };
 

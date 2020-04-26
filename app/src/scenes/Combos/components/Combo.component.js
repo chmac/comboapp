@@ -14,7 +14,7 @@ import InteractionIcon from "./InteractionIcon.component";
 
 type Props = {
   firstId: string,
-  secondId: string
+  secondId: string,
 } & StateProps;
 
 const Combo = (props: Props) => {
@@ -26,7 +26,8 @@ const Combo = (props: Props) => {
     <div>
       <h3>
         {first.name} + {second.name} ={" "}
-        <InteractionIcon interaction={interaction.interaction} /> {interaction.status} {interaction.description} 
+        <InteractionIcon interaction={interaction.interaction} />{" "}
+        {interaction.status} {interaction.description}
       </h3>
       {isEmpty(interaction.note) ? null : <p>{interaction.note}</p>}
     </div>
@@ -36,7 +37,7 @@ const Combo = (props: Props) => {
 type StateProps = {
   interaction: Interaction,
   first: Substance,
-  second: Substance
+  second: Substance,
 };
 
 const mapStateToProps = (state, props): StateProps => {
@@ -45,7 +46,7 @@ const mapStateToProps = (state, props): StateProps => {
   return {
     interaction: getInteraction([firstId, secondId]),
     first: getSubstance(firstId),
-    second: getSubstance(secondId)
+    second: getSubstance(secondId),
   };
 };
 

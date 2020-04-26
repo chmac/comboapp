@@ -10,7 +10,7 @@ import config from "./config.json";
 
 export type Substance = {
   id: string,
-  name: string
+  name: string,
 };
 
 // Build a list of "proper" names from `config.tableOrder`
@@ -39,16 +39,16 @@ const groups = [
 
 const nameToType = {};
 const groupPairs = map(([type, names]) => {
-  each(name => {
+  each((name) => {
     nameToType[name] = type;
   })(names);
 })(groups);
 
-const substances = map(name => {
+const substances = map((name) => {
   return {
     id: name.toLowerCase(),
     name,
-    type: nameToType[name]
+    type: nameToType[name],
   };
 })(names);
 

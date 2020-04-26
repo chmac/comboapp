@@ -12,7 +12,7 @@ import Question from "react-icons/lib/fa/question";
 import { type InteractionTypes } from "data/interactions.data";
 
 type Props = {
-  interaction: InteractionTypes
+  interaction: InteractionTypes,
 };
 
 const style = (color: string) => {
@@ -20,7 +20,7 @@ const style = (color: string) => {
     backgroundColor: color,
     padding: 3,
     width: 25,
-    height: 25
+    height: 25,
   };
 };
 
@@ -31,7 +31,7 @@ const interactionToIconMap = {
   caution: <Warning color="white" style={style("#d5c625")} />,
   unsafe: <Heartbeat color="white" style={style("#d98427")} />,
   danger: <Times color="white" style={style("#d12128")} />,
-  unknown: <Question color="white" style={style("#6f6f6f")} />
+  unknown: <Question color="white" style={style("#6f6f6f")} />,
 };
 
 const InteractionIcon = (props: Props) => {

@@ -23,19 +23,19 @@ const getState = get(path);
 const empty = {
   selected: [],
   // Convert the array of substances to `{[id]: object}`
-  substances
+  substances,
 };
 
 type State = {
   selected: string[],
   substances: {
-    [string]: Substance
-  }
+    [string]: Substance,
+  },
 };
 
 type Action = {
   type: "toggleSelected" | "resetSelection",
-  payload: Object
+  payload: Object,
 };
 
 const toggleSelectedInSelected = (selected: string[], id: string) => {
@@ -74,14 +74,14 @@ export default reducer;
 export const toggleSelected = (id: string) => {
   return {
     type: "toggleSelected",
-    payload: { id, now: Date.now() }
+    payload: { id, now: Date.now() },
   };
 };
 
 export const resetSelection = () => {
   return {
     type: "resetSelection",
-    payload: {}
+    payload: {},
   };
 };
 
@@ -90,7 +90,7 @@ export const getSelected = flow([getState, get("selected")]);
 export const getSubstances = flow([
   getState,
   get("substances"),
-  sortBy("name")
+  sortBy("name"),
 ]);
 
 export const getSubstance = (id: string) => get(id)(substances);
