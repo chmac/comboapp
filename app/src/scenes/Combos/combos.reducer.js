@@ -120,6 +120,25 @@ export const getComboCount = (state: State) => {
   return (count * (count - 1)) / 2;
 };
 
+// NOTE: This is copied from the logic here:
+// https://github.com/TripSit/factsheets/blob/058f9efde34de0a61d1530781f3513046ddb814a/routes/index.js#L294-L310
+const transformIdForInteractionSearch = (substance: Substance): string => {
+  if (substance.id.match(/^do.$/i)) {
+    return "dox";
+  } else if (substance.id.match(/^2c-.$/i)) {
+    return "2c-x";
+  } else if (substance.id.match(/^5-meo-..t$/i)) {
+    return "5-meo-xxt";
+  } else if (includes("benzodiazepine", substance.categories)) {
+    return "benzodiazepines";
+  } else if (includes("opioid", substance.categories)) {
+    return "opioids";
+  } else if (includes("stimulant", substance.categories)) {
+    return "amphetamines";
+  }
+  return substance.id;
+};
+
 const defaultInteraction = {
   interaction: "unknown",
   status: "unknown",
@@ -127,13 +146,28 @@ const defaultInteraction = {
 };
 
 export const getInteraction = (ids: string[]): Interaction => {
+  const first = getSubstance(ids[0]);
+  const second = getSubstance(ids[1]);
+
+  const firstSearchId = transformIdForInteractionSearch(first);
+  const secondSearchId = transformIdForInteractionSearch(second);
+
+  const searchIds = [firstSearchId, secondSearchId];
+
   const interaction = find((interaction: Interaction) => {
     // If the difference between this substance's IDs array and our target IDs
     // array is empty, then this interaction is a match.
-    return isEmpty(difference(interaction.ids, ids));
+    return isEmpty(difference(interaction.ids, searchIds));
   })(interactions);
 
-  return isEmpty(interaction) ? { ...defaultInteraction, ids } : interaction;
+  // If we find a real interaction for these 2 substances, then return it now,
+  // this is our best case scenario. Otherwise we fall back on alternative
+  // matching methods.
+  if (!isEmpty(interaction)) {
+    return interaction;
+  }
+
+  return { ...defaultInteraction, ids };
 };
 
 type Combo = [string, string];
