@@ -12,7 +12,11 @@ import each from "lodash/fp/each";
 import eq from "lodash/fp/eq";
 import sortBy from "lodash/fp/sortBy";
 
-import substances, { type Substance } from "data/substances.data";
+import {
+  substances,
+  allSubstances,
+  type Substance,
+} from "data/substances.data";
 import interactions, { type Interaction } from "data/interactions.data";
 
 import path from "./selector.path";
@@ -23,11 +27,15 @@ const empty = {
   selected: [],
   // Convert the array of substances to `{[id]: object}`
   substances,
+  allSubstances,
 };
 
 type State = {
   selected: string[],
   substances: {
+    [string]: Substance,
+  },
+  allSubstances: {
     [string]: Substance,
   },
 };
@@ -59,8 +67,8 @@ const reducer = (state: State = empty, action: Action) => {
   if (type === "toggleSelected") {
     const { id, now } = payload;
     const selected = toggleSelectedInSelected(state.selected, id);
-    const substances = touchSubstance(state.substances, id, now);
-    return { ...state, selected, substances };
+    const allSubstances = touchSubstance(state.allSubstances, id, now);
+    return { ...state, selected, allSubstances };
   } else if (type === "resetSelection") {
     return set("selected", [])(state);
   }
@@ -92,7 +100,13 @@ export const getSubstances = flow([
   sortBy("name"),
 ]);
 
-export const getSubstance = (id: string) => get(id)(substances);
+export const getAllSubstances = flow([
+  getState,
+  get("allSubstances"),
+  sortBy("name"),
+]);
+
+export const getSubstance = (id: string) => get(id)(allSubstances);
 
 export const getIsSelected = (state: State, id: string) => {
   return includes(id)(getSelected(state));

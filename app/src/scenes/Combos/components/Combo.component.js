@@ -33,7 +33,6 @@ const Combo = (props: Props) => {
   const interaction = isEmpty(props.interaction)
     ? defaultInteraction
     : props.interaction;
-  // debugger;
 
   return (
     <div>

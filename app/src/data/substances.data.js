@@ -80,6 +80,5 @@ export const allSubstances = keyById(
       name: pretty_name,
       type,
     };
-    // debugger;
   })(allDrugs)
 );

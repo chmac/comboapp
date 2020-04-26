@@ -10,19 +10,20 @@ import Key from "./components/Key.component";
 import Info from "./components/Info.component";
 import InfoCategory from "./components/InfoCategory.component";
 
-import { getSubstances, getSelected } from "./combos.reducer";
+import { getSubstances, getAllSubstances, getSelected } from "./combos.reducer";
 
 import { type Substance as SubstanceType } from "data/substances.data";
 
 type Props = {
   substances: { [id: string]: SubstanceType },
+  allSubstances: { [id: string]: SubstanceType },
   selected: string[],
 };
 
 const renderSubstances = map((s) => <Substance key={s.id} substance={s} />);
 
 const Combos = (props: Props) => {
-  const { substances } = props;
+  const { substances, allSubstances } = props;
 
   return (
     <div>
@@ -31,6 +32,8 @@ const Combos = (props: Props) => {
       <SelectedCombos />
       <h2 style={{ marginTop: 40, marginBottom: 30 }}>Choose substances:</h2>
       {renderSubstances(substances)}
+      <h2 style={{ marginTop: 40, marginBottom: 30 }}>All substances:</h2>
+      {renderSubstances(allSubstances)}
       <Info />
     </div>
   );
@@ -39,7 +42,7 @@ const Combos = (props: Props) => {
 const mapStateToProps = (state) => {
   return {
     substances: getSubstances(state),
-    selected: getSelected(state),
+    allSubstances: getAllSubstances(state),
   };
 };
 
