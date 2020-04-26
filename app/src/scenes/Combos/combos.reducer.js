@@ -120,13 +120,19 @@ export const getComboCount = (state: State) => {
   return (count * (count - 1)) / 2;
 };
 
+const defaultInteraction = {
+  interaction: "unknown",
+  status: "unknown",
+  description: "",
+};
+
 export const getInteraction = (ids: string[]): Interaction => {
   return (
     find((interaction: Interaction) => {
       // If the difference between this substance's IDs array and our target IDs
       // array is empty, then this interaction is a match.
       return isEmpty(difference(interaction.ids, ids));
-    })(interactions) || {}
+    })(interactions) || defaultInteraction
   );
 };
 
