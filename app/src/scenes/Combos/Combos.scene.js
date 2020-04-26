@@ -22,7 +22,7 @@ type Props = {
 const renderSubstances = map((s) => <Substance key={s.id} substance={s} />);
 
 const Combos = (props: Props) => {
-  const { substances, selected } = props;
+  const { substances } = props;
 
   return (
     <div>
