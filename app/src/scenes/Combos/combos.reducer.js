@@ -45,7 +45,7 @@ type Action = {
   payload: Object,
 };
 
-const toggleSelectedInSelected = (selected: string[], id: string) => {
+const toggleSelectedInSelected = (selected: string[], id: string): string[] => {
   if (includes(id)(selected)) {
     return reject(eq(id))(selected);
   } else {
