@@ -89,6 +89,8 @@ Finished.
       R.uniq()
     );
 
+    // These are in the allDrugs list, and there is some available combo data
+    // for them.
     const drugsWithComboData = R.pipe(
       Object.values(allDrugs),
       R.map((drug) => {
@@ -102,12 +104,34 @@ Finished.
         }
         return false;
       }),
-      R.map(R.pick(["name", "pretty_name", "search_name"]))
+      R.map(({ name, pretty_name, search_name }) => ({
+        id: name,
+        name: pretty_name,
+        comboId: search_name,
+        isCommon: comboNames.includes(name),
+      }))
     );
 
+    const interactions = R.pipe(
+      R.toPairs(combos),
+      R.map(([firstId, data]) => {
+        return R.map(R.toPairs(data), ([secondId, interaction]) => {
+          return {
+            ids: [firstId, secondId],
+            interaction,
+          };
+        });
+      })
+    );
+
+    const output = {
+      allSubstances: drugsWithComboData,
+      interactions,
+    };
+
     fs.writeFileSync(
-      path.join(DATA_PATH, "drugsWithCombos.json"),
-      JSON.stringify(drugsWithComboData)
+      path.join(DATA_PATH, "comboData.json"),
+      JSON.stringify(output)
     );
 
     this.log("Finished #IkG35t");
