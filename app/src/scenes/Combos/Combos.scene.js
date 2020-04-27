@@ -20,7 +20,9 @@ type Props = {
   selected: string[],
 };
 
-const renderSubstances = map((s) => <Substance key={s.id} substance={s} />);
+const renderSubstancesButtons = map((s) => (
+  <Substance key={s.id} substance={s} />
+));
 
 const Combos = (props: Props) => {
   const { substances, allSubstances } = props;
@@ -31,9 +33,9 @@ const Combos = (props: Props) => {
       <InfoCategory />
       <SelectedCombos />
       <h2 style={{ marginTop: 40, marginBottom: 30 }}>Choose substances:</h2>
-      {renderSubstances(substances)}
+      {renderSubstancesButtons(substances)}
       <h2 style={{ marginTop: 40, marginBottom: 30 }}>All substances:</h2>
-      {renderSubstances(allSubstances)}
+      {renderSubstancesButtons(allSubstances)}
       <Info />
     </div>
   );
