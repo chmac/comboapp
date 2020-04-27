@@ -188,5 +188,3 @@ export const getCombos = (state: any): Combo[] => {
 
   return combos;
 };
-
-// export const getSelectedCombos
