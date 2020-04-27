@@ -91,6 +91,10 @@ Finished.
 
     const drugsWithComboData = R.pipe(
       Object.values(allDrugs),
+      R.map((drug) => {
+        const searchName = transformNameForInteractionSearch(drug);
+        return { ...drug, search_name: searchName };
+      }),
       R.filter((drug) => {
         const searchName = transformNameForInteractionSearch(drug);
         if (comboNames.includes(searchName)) {
@@ -98,7 +102,7 @@ Finished.
         }
         return false;
       }),
-      R.map(R.pick(["name", "pretty_name"]))
+      R.map(R.pick(["name", "pretty_name", "search_name"]))
     );
 
     fs.writeFileSync(
