@@ -124,8 +124,19 @@ Finished.
       })
     );
 
+    const allSubstances = R.reduce(
+      drugsWithComboData,
+      (acc, drug) => {
+        return {
+          ...acc,
+          [drug.id]: drug,
+        };
+      },
+      {}
+    );
+
     const output = {
-      allSubstances: drugsWithComboData,
+      allSubstances,
       interactions,
     };
 
