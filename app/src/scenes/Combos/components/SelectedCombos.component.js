@@ -4,7 +4,7 @@ import React from "react";
 import { connect } from "react-redux";
 import map from "lodash/fp/map";
 
-import { getSelected, getCombos } from "../combos.reducer";
+import { getCombos } from "../combos.reducer";
 
 import Combo from "./Combo.component";
 
@@ -20,7 +20,6 @@ const SelectedCombos = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    selected: getSelected(state),
     combos: getCombos(state),
   };
 };
