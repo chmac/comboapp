@@ -13,7 +13,7 @@ const renderCombos = map((combo) => (
 ));
 
 const SelectedCombos = (props) => {
-  const { selected, combos } = props;
+  const { combos } = props;
 
   return <div>{renderCombos(combos)}</div>;
 };

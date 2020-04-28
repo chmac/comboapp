@@ -10,6 +10,14 @@ import { getIsSelected, toggleSelected } from "../combos.reducer";
 
 import "./Substance.css";
 
+type StateProps = {
+  isSelected: boolean,
+};
+
+type DispatchProps = {
+  toggleSelected: (string) => {},
+};
+
 type Props = {
   substance: SubstanceType,
 } & StateProps &
@@ -29,17 +37,9 @@ const Substance = (props: Props) => {
   );
 };
 
-type StateProps = {
-  isSelected: boolean,
-};
-
 const mapStateToProps = (state, props) => ({
   isSelected: getIsSelected(state, props.substance.id),
 });
-
-type DispatchProps = {
-  toggleSelected: (string) => {},
-};
 
 const mapDispatchToProps = (dispatch): DispatchProps =>
   bindActionCreators(

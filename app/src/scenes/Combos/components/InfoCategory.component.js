@@ -12,9 +12,9 @@ const renderTypes = map((type) => {
   const { id, name, description } = type;
 
   return (
-    <div className={"CategoriesItems"} key={type.id}>
+    <div className={"CategoriesItems"} key={id}>
       <p>
-        <InteractionIcon interaction={type.id} /> {name}{" "}
+        <InteractionIcon interaction={id} /> {name}{" "}
       </p>
       <p>{description}</p>
     </div>

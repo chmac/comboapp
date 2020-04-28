@@ -8,7 +8,6 @@ import flow from "lodash/fp/flow";
 import find from "lodash/fp/find";
 import isEmpty from "lodash/fp/isEmpty";
 import difference from "lodash/fp/difference";
-import values from "lodash/fp/values";
 import each from "lodash/fp/each";
 import eq from "lodash/fp/eq";
 import sortBy from "lodash/fp/sortBy";
