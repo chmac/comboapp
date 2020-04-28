@@ -38,7 +38,7 @@ const groups = [
 */
 
 const nameToType = {};
-const groupPairs = map(([type, names]) => {
+each(([type, names]) => {
   each((name) => {
     nameToType[name] = type;
   })(names);
