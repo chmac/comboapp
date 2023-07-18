@@ -2,7 +2,7 @@
   "name": "combos",
   "version": "0.1.0",
   "private": true,
-  "homepage": "",
+  "homepage": "https://combo.tripsit.me",
   "dependencies": {
     "lodash": "^4.17.5",
     "react": "^16.3.1",
@@ -16,9 +16,12 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "gh-pages": "gh-pages --repo git@github.com:TripSit/comboapp.git --dist build/",
+    "deploy": "yarn build && yarn gh-pages"
   },
   "devDependencies": {
-    "flow-bin": "^0.69.0"
+    "flow-bin": "^0.69.0",
+    "gh-pages": "2.2.0"
   }
 }
